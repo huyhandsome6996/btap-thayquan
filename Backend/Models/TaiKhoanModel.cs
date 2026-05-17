@@ -1,21 +1,21 @@
-namespace Backend.Models; // Đây là "họ tên" của thư mục chứa file này
+namespace Backend.Models; // Chỗ này để gom các file chứa dữ liệu vào một góc cho dễ quản lý nè
 
-// Đây là bản thiết kế (Model) cho yêu cầu Đăng Nhập
-// "record" là một kiểu Class đặc biệt trong C# dùng để chứa dữ liệu một cách gọn nhẹ
+// Cái khung này là để hứng dữ liệu gửi lên khi người dùng bấm Đăng Nhập
+// Dùng "record" cho nó nhẹ người, viết code ngắn gọn mà không cần rườm rà
 public record DangNhapRequest(
-    string TenDangNhap, // Một chuỗi chữ chứa tên người dùng nhập vào
-    string MatKhau      // Một chuỗi chữ chứa mật khẩu người dùng nhập vào
+    string TenDangNhap, // Cái tên tài khoản mà người ta gõ vào ô đăng nhập
+    string MatKhau      // Mật khẩu người ta nhập để vô hệ thống
 );
 
-// Đây là bản thiết kế (Model) cho yêu cầu Đăng Ký
+// Còn cái khung này là để gom toàn bộ thông tin đăng ký gửi từ dưới web lên
 public record DangKyRequest(
-    string Ho,          // Chứa Họ
-    string Ten,         // Chứa Tên
-    string TenDangNhap, // Chứa Tên tài khoản muốn tạo
-    string MatKhau,     // Chứa Mật khẩu muốn tạo
-    string Email,       // Chứa địa chỉ Email
-    string NgaySinh,    // Chứa ngày sinh (dưới dạng chữ "năm-tháng-ngày")
-    string GioiTinh,    // Chứa giới tính ("Nam" hoặc "Nữ")
-    string QueQuan,     // Chứa tên tỉnh thành
-    bool DongY          // Kiểu Đúng/Sai (True/False) cho ô tích chọn đồng ý
+    string Ho,          // Họ của người dùng (ví dụ: Nguyễn, Trần...)
+    string Ten,         // Tên của người dùng (ví dụ: An, Bình...)
+    string TenDangNhap, // Tên tài khoản mà người ta muốn tạo mới
+    string MatKhau,     // Mật khẩu người ta muốn đặt cho tài khoản
+    string Email,       // Email liên hệ của người ta
+    string NgaySinh,    // Ngày sinh (gửi dạng chữ "năm-tháng-ngày" cho tiện xử lý)
+    string GioiTinh,    // Giới tính, chọn "Nam" hoặc "Nữ" là được
+    string QueQuan,     // Quê quán (chọn ở mấy tỉnh thành có sẵn)
+    bool DongY          // Tích chọn đồng ý với điều khoản (Đúng / Sai)
 );

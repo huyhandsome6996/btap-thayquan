@@ -20,10 +20,10 @@ public partial class Form1 : Form
         };
         this.Controls.Add(webView);
         
-        // Cấu hình WebView2
+        // Khởi động trình duyệt thu nhỏ WebView2 để hiển thị trang web bên trong ứng dụng
         await webView.EnsureCoreWebView2Async(null);
         
-        // Điều hướng tới API Backend (index.html được phục vụ ở đây)
+        // Dẫn lối cho trình duyệt chạy thẳng tới trang chủ index.html được lưu ở Backend
         webView.Source = new Uri("http://localhost:5103");
         
         this.Text = "Ứng dụng Đồ án của tôi";

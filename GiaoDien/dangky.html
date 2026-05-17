@@ -189,6 +189,7 @@
 
     <script>
         document.getElementById('btnDangKy').addEventListener('click', async () => {
+            // Gom hết dữ liệu người dùng đã điền trên giao diện bỏ vô một cái rổ nè
             const duLieu = {
                 ho: document.getElementById('ho').value,
                 ten: document.getElementById('ten').value,
@@ -202,10 +203,12 @@
             };
 
             const thongBao = document.getElementById('thongBao');
+            // Xóa phăng thông báo cũ đi để chuẩn bị in kết quả mới
             thongBao.className = 'message';
             thongBao.innerText = '';
 
             try {
+                // Gửi cái rổ dữ liệu đó lên cho Backend xử lý giúp mình
                 const phanHoi = await fetch('/api/taikhoan/dang-ky', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -214,14 +217,17 @@
 
                 const ketQua = await phanHoi.json();
 
+                // Nếu mọi thứ ok ngon lành cành đào
                 if (phanHoi.ok) {
                     thongBao.classList.add('success');
                     thongBao.innerText = ketQua.thongBao;
                 } else {
+                    // Còn nếu có lỗi gì thì show lỗi đó ra liền
                     thongBao.classList.add('error');
                     thongBao.innerText = ketQua.thongBao;
                 }
             } catch (loi) {
+                // Đề phòng trường hợp mất mạng hoặc server sập đột xuất
                 thongBao.classList.add('error');
                 thongBao.innerText = "Lỗi kết nối server!";
             }

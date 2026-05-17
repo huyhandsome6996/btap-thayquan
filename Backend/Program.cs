@@ -3,12 +3,12 @@ using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Khai báo dùng Controller để viết logic
+// Kích hoạt tính năng Controller để viết code xử lý các chức năng đăng nhập, đăng ký
 builder.Services.AddControllers(); 
 
 var app = builder.Build();
 
-// Cấu hình để mở file index.html tự động
+// Cài đặt để khi vừa mở web lên là nó tự động nhảy vào trang chủ index.html luôn
 app.UseDefaultFiles(new DefaultFilesOptions
 {
     FileProvider = new PhysicalFileProvider(
@@ -16,7 +16,7 @@ app.UseDefaultFiles(new DefaultFilesOptions
     RequestPath = ""
 });
 
-// Cho phép tải các file HTML/CSS/JS từ thư mục GiaoDien
+// Bật tính năng tải các file tĩnh (như giao diện HTML, phong cách CSS hay code JS) từ thư mục GiaoDien
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
@@ -24,8 +24,8 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = ""
 });
 
-// Kết nối yêu cầu từ Web tới các Controller
+// Liên kết các đường truyền từ trình duyệt web vào đúng các Controller xử lý ở Backend
 app.MapControllers(); 
 
-// Chạy ứng dụng
+// Lệnh khởi động toàn bộ hệ thống lên và bắt đầu chạy thôi!
 app.Run();
